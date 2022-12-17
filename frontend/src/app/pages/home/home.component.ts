@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ImageService } from 'src/app/shared/services/image.service';
+
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
+}
 
 @Component({
   selector: 'app-home',
@@ -6,19 +11,38 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  uploadedFiles: any[] = [];
+  public uploadedFiles: File[] = [];
+  private selectedFile!: any;
 
-  constructor() {}
+  constructor(private imageService: ImageService) {}
 
   ngOnInit(): void {}
 
-  onUpload(event: any) {
-    for (let file of event.files) {
-      this.uploadedFiles.push(file);
-    }
-  }
+  uploadHandler({ files }: { files: File[] }) {
+    if (!files) return;
 
-  uploadHandler(event: any) {
-    console.log(event?.files);
+    for (let f of files) {
+      this.uploadedFiles.push(f);
+    }
+
+    const file = files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event: any) => {
+      console.log('Event image:', event);
+
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+
+      this.imageService.upload(this.selectedFile.file).subscribe({
+        next: (data) => {
+          console.log('🟢 Data:', data);
+        },
+        error: (error) => {
+          console.log('🔴 Error:', error);
+        },
+      });
+    });
+
+    reader.readAsDataURL(file);
   }
 }
