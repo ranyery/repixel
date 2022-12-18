@@ -3,7 +3,7 @@
 // https://www.npmjs.com/package/sharp
 import cors from "cors";
 import express from "express";
-import { fileTypeFromBuffer } from 'file-type';
+import { fileTypeFromBuffer } from 'file-type'; // ?Change to image-type
 // import imagemin from "imagemin";
 // import imageminMozjpeg from "imagemin-mozjpeg";
 import multer from "multer";
