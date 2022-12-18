@@ -14,12 +14,16 @@ export class HomeComponent implements OnInit {
   public uploadedFiles: File[] = [];
   private selectedFile!: any;
 
+  public hasImageConverted: boolean = false;
+  public convertedImage: any;
+
   constructor(private imageService: ImageService) {}
 
   ngOnInit(): void {}
 
   uploadHandler({ files }: { files: File[] }) {
     if (!files) return;
+    this.hasImageConverted = false;
 
     for (let f of files) {
       this.uploadedFiles.push(f);
@@ -35,7 +39,8 @@ export class HomeComponent implements OnInit {
 
       this.imageService.upload(this.selectedFile.file).subscribe({
         next: (data) => {
-          console.log('🟢 Data:', data);
+          this.convertedImage = data;
+          this.hasImageConverted = true;
         },
         error: (error) => {
           console.log('🔴 Error:', error);

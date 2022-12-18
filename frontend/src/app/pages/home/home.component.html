@@ -16,3 +16,13 @@
     </ng-template>
   </p-fileUpload>
 </div>
+
+<div *ngIf="hasImageConverted">
+  <a
+    [download]="convertedImage?.originalname"
+    [href]="convertedImage?.base64"
+    [title]="convertedImage?.originalname"
+  >
+    <img [alt]="convertedImage?.originalname" [src]="convertedImage?.base64" />
+  </a>
+</div>
