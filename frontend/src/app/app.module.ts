@@ -7,6 +7,7 @@ import {
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeaderModule } from './shared/components/header/header.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     NoopAnimationsModule,
     AppRoutingModule,
+    HeaderModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

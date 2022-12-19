@@ -4,10 +4,9 @@ import { PrimeNGConfig } from 'primeng/api';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  host: { class: 'container d-block' },
 })
 export class AppComponent implements OnInit {
-  title = 'repixel';
-
   constructor(private primengConfig: PrimeNGConfig) {}
 
   ngOnInit(): void {
