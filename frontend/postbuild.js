@@ -22,15 +22,13 @@ console.log("Running PurgeCSS...");
 exec(
   "purgecss -css dist/*.css --content dist/index.html dist/*.js -o dist/",
   function (error, stdout, stderr) {
-    console.log("PurgeCSS done");
-    console.log();
-
     for (const d of data) {
       const newSize = getFilesizeInKiloBytes("./dist/" + d.file) + "kb";
       d.newSize = newSize;
     }
 
     console.table(data);
+    console.log("PurgeCSS done.");
   }
 );
 
