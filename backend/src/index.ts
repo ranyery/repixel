@@ -33,6 +33,10 @@ app.use(cors());
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
+app.get("/", (request, response) => {
+  return response.send({message: "Hello, World!"})
+})
+
 app.post("/", upload.single("image"), async (request, response) => {
   const { originalname, buffer, size } = request.file;
 
