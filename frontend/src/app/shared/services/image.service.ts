@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ImageService {
-  private _baseUrl = 'http://localhost:3333';
+  private _baseUrl = 'https://api-repixel.vercel.app';
 
   constructor(private http: HttpClient) {}
 
