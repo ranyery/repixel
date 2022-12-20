@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IUploadSettings } from 'src/app/shared/interfaces/IUploadConfig';
 import { ImageService } from 'src/app/shared/services/image.service';
 
 @Component({
@@ -27,8 +28,16 @@ export class ResizeComponent implements OnInit {
     this.fileToUpload = files[0];
     const reader = new FileReader();
 
+    const settings: IUploadSettings = {
+      width: this.width,
+      height: this.height,
+      xScale: this.xScale,
+      yScale: this.yScale,
+      lockAspectRatio: this.lockAspectRatio,
+    };
+
     reader.addEventListener('load', () => {
-      this.imageService.upload(this.fileToUpload!).subscribe({
+      this.imageService.upload(this.fileToUpload!, settings).subscribe({
         next: (data) => {
           console.log('🟢 Success:', data);
         },
