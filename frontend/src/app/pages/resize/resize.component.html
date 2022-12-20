@@ -1,0 +1,59 @@
+<div class="resize-page">
+  <div class="resize-page__import col-6">
+    <div>
+      <i class="pi pi-image" style="font-size: 4rem"></i>
+    </div>
+    <h2 class="resize-page__import__description">Drag and drop image</h2>
+    <div class="resize-page__import__actions">
+      <p-fileUpload
+        mode="basic"
+        [customUpload]="true"
+        (uploadHandler)="uploadHandler($event)"
+        accept="image/*"
+        [maxFileSize]="5 * 1000000"
+        [auto]="true"
+        chooseLabel="Select image from computer"
+      ></p-fileUpload>
+    </div>
+  </div>
+  <div class="resize-page__configs col-6">
+    <p class="resize-page__configs__title">Custom resize</p>
+    <div class="resize-page__configs__pixels">
+      <div class="p-inputgroup">
+        <span class="p-float-label">
+          <input type="text" id="inputgroup" pInputText [(ngModel)]="width" />
+          <label for="inputgroup">Width</label>
+        </span>
+        <span class="p-inputgroup-addon">px</span>
+      </div>
+      <div class="p-inputgroup">
+        <span class="p-float-label">
+          <input type="text" id="inputgroup" pInputText [(ngModel)]="height" />
+          <label for="inputgroup">Height</label>
+        </span>
+        <span class="p-inputgroup-addon">px</span>
+      </div>
+    </div>
+    <div class="resize-page__configs__percentage">
+      <div class="p-inputgroup">
+        <span class="p-float-label">
+          <input type="text" id="inputgroup" pInputText [(ngModel)]="xScale" />
+          <label for="inputgroup">X Scale</label>
+        </span>
+        <span class="p-inputgroup-addon">%</span>
+      </div>
+      <div class="p-inputgroup">
+        <span class="p-float-label">
+          <input type="text" id="inputgroup" pInputText [(ngModel)]="yScale" />
+          <label for="inputgroup">Y Scale</label>
+        </span>
+        <span class="p-inputgroup-addon">%</span>
+      </div>
+    </div>
+    <p-checkbox
+      label="Lock aspect ratio"
+      [(ngModel)]="lockAspectRatio"
+      [binary]="true"
+    ></p-checkbox>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+.resize-page {
+  display: flex;
+  padding: 16px;
+  background-color: #fff;
+
+  &__import {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border: dotted 4px #000;
+    border-radius: 8px;
+    padding: 32px 48px;
+
+    &__description {
+      margin: 32px 0 48px 0;
+    }
+
+    &__actions {
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  &__configs {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    padding: 32px 48px;
+
+    &__title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    &__pixels {
+      display: flex;
+      gap: 16px;
+    }
+
+    &__percentage {
+      display: flex;
+      gap: 16px;
+    }
+  }
+}
