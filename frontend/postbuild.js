@@ -28,7 +28,7 @@ exec(
     }
 
     console.table(data);
-    console.log("PurgeCSS done.");
+    console.log("PurgeCSS done.\n");
   }
 );
 
