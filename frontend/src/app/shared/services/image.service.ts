@@ -2,6 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+export class ImageSnippet {
+  constructor(public src: string, public file: File) {}
+}
+
 @Injectable({ providedIn: 'root' })
 export class ImageService {
   private _baseUrl = 'https://api.converterimagem.com';
