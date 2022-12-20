@@ -1,20 +1,24 @@
 <div class="resize-page">
-  <div class="resize-page__import col-6">
-    <div>
-      <i class="pi pi-image" style="font-size: 4rem"></i>
-    </div>
-    <h2 class="resize-page__import__description">Drag and drop image</h2>
-    <div class="resize-page__import__actions">
-      <p-fileUpload
-        mode="basic"
-        [customUpload]="true"
-        (uploadHandler)="uploadHandler($event)"
-        accept="image/*"
-        [maxFileSize]="5 * 1000000"
-        [auto]="true"
-        chooseLabel="Select image from computer"
-      ></p-fileUpload>
-    </div>
+  <div class="col-6">
+    <p-fileUpload
+      [customUpload]="true"
+      (uploadHandler)="uploadHandler($event)"
+      (onSelect)="onSelect($event)"
+      (onRemove)="onRemove()"
+      [multiple]="false"
+      accept="image/*"
+      [maxFileSize]="5 * 1000000"
+      [showCancelButton]="false"
+      chooseLabel="Selecione uma imagem"
+    >
+      <ng-template pTemplate="content">
+        <div class="no-fileupload" *ngIf="!fileToUpload">
+          <i class="pi pi-image" style="font-size: 4rem"></i>
+          <p>Arraste e solte uma imagem aqui</p>
+          <span>tamanho máximo permitido: 5MB</span>
+        </div>
+      </ng-template>
+    </p-fileUpload>
   </div>
   <div class="resize-page__configs col-6">
     <p class="resize-page__configs__title">Custom resize</p>
@@ -22,14 +26,14 @@
       <div class="p-inputgroup">
         <span class="p-float-label">
           <input type="text" id="inputgroup" pInputText [(ngModel)]="width" />
-          <label for="inputgroup">Width</label>
+          <label for="inputgroup">Largura</label>
         </span>
         <span class="p-inputgroup-addon">px</span>
       </div>
       <div class="p-inputgroup">
         <span class="p-float-label">
           <input type="text" id="inputgroup" pInputText [(ngModel)]="height" />
-          <label for="inputgroup">Height</label>
+          <label for="inputgroup">Altura</label>
         </span>
         <span class="p-inputgroup-addon">px</span>
       </div>
@@ -38,20 +42,20 @@
       <div class="p-inputgroup">
         <span class="p-float-label">
           <input type="text" id="inputgroup" pInputText [(ngModel)]="xScale" />
-          <label for="inputgroup">X Scale</label>
+          <label for="inputgroup">Horizontal</label>
         </span>
         <span class="p-inputgroup-addon">%</span>
       </div>
       <div class="p-inputgroup">
         <span class="p-float-label">
           <input type="text" id="inputgroup" pInputText [(ngModel)]="yScale" />
-          <label for="inputgroup">Y Scale</label>
+          <label for="inputgroup">Vertical</label>
         </span>
         <span class="p-inputgroup-addon">%</span>
       </div>
     </div>
     <p-checkbox
-      label="Lock aspect ratio"
+      label="Manter taxa de proporção"
       [(ngModel)]="lockAspectRatio"
       [binary]="true"
     ></p-checkbox>

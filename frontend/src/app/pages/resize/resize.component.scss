@@ -3,25 +3,6 @@
   padding: 16px;
   background-color: #fff;
 
-  &__import {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    border: dotted 4px #000;
-    border-radius: 8px;
-    padding: 32px 48px;
-
-    &__description {
-      margin: 32px 0 48px 0;
-    }
-
-    &__actions {
-      display: flex;
-      gap: 16px;
-    }
-  }
-
   &__configs {
     display: flex;
     flex-direction: column;
@@ -42,6 +23,66 @@
     &__percentage {
       display: flex;
       gap: 16px;
+    }
+  }
+
+  // Custom components
+  p-fileupload::ng-deep .p-fileupload {
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    border: dotted 4px #000;
+    border-radius: 8px;
+
+    .p-fileupload-buttonbar {
+      display: flex;
+      justify-content: center;
+      padding: 1.25rem 0;
+      border: 0;
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+    }
+
+    .p-fileupload-content {
+      height: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0;
+      border: 0;
+      color: #000;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .no-fileupload {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 16px 0 8px;
+      }
+
+      span {
+        font-size: 1rem;
+        color: gray;
+      }
+    }
+
+    .p-fileupload-row {
+      text-align: center;
+      > div:last-child {
+        text-align: center !important;
+      }
+    }
+
+    .p-progressbar {
+      display: none;
     }
   }
 }

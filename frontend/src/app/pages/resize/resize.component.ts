@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  ImageService,
-  ImageSnippet,
-} from 'src/app/shared/services/image.service';
+import { ImageService } from 'src/app/shared/services/image.service';
 
 @Component({
   selector: 'app-resize',
@@ -10,8 +7,10 @@ import {
   styleUrls: ['./resize.component.scss'],
 })
 export class ResizeComponent implements OnInit {
-  public width!: number;
-  public height!: number;
+  public fileToUpload: File | null = null;
+
+  public width: number = 1280;
+  public height: number = 720;
 
   public xScale: number = 100;
   public yScale: number = 100;
@@ -22,18 +21,16 @@ export class ResizeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  uploadHandler({ files }: { files: File[] }) {
-    if (!files) return;
+  public uploadHandler({ files }: { files: File[] }) {
+    if (files.length === 0) return;
 
-    const file = files[0];
+    this.fileToUpload = files[0];
     const reader = new FileReader();
 
-    reader.addEventListener('load', (event: any) => {
-      const image = new ImageSnippet(event.target.result, file);
-
-      this.imageService.upload(image.file).subscribe({
+    reader.addEventListener('load', () => {
+      this.imageService.upload(this.fileToUpload!).subscribe({
         next: (data) => {
-          console.log('Data:', data);
+          console.log('🟢 Success:', data);
         },
         error: (error) => {
           console.log('🔴 Error:', error);
@@ -41,6 +38,16 @@ export class ResizeComponent implements OnInit {
       });
     });
 
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(this.fileToUpload);
+  }
+
+  public onSelect({ files }: { files: File[] }) {
+    if (files.length === 0) return;
+
+    this.fileToUpload = files[0];
+  }
+
+  public onRemove() {
+    this.fileToUpload = null;
   }
 }
