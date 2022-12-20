@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -16,17 +16,14 @@ export class ImageService {
 
   public upload(image: File, settings: IUploadSettings): Observable<any> {
     const { width, height, xScale, yScale, lockAspectRatio } = settings;
-
     const formData = new FormData();
     formData.append('image', image);
     formData.append('width', String(width));
     formData.append('height', String(height));
+    formData.append('xScale', String(xScale));
+    formData.append('yScale', String(yScale));
+    formData.append('lockAspectRatio', String(lockAspectRatio));
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json; charset=utf-8',
-      settings: JSON.stringify(settings),
-    });
-
-    return this.http.post<any>(this._baseUrl, formData, { headers });
+    return this.http.post<any>(this._baseUrl, formData);
   }
 }
