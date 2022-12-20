@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,24 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent implements OnInit {
+  public items: MenuItem[] = [];
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.items = [
+      {
+        label: 'Converter IMAGEM',
+        routerLink: 'converter-imagem',
+      },
+      {
+        label: 'Comprimir IMAGEM',
+        routerLink: 'comprimir-imagem',
+      },
+      {
+        label: 'Redimensionar IMAGEM',
+        routerLink: 'redimensionar-imagem',
+      },
+    ];
+  }
 }

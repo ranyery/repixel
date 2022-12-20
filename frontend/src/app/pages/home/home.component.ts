@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ImageService } from 'src/app/shared/services/image.service';
 
-class ImageSnippet {
-  constructor(public src: string, public file: File) {}
-}
+import { ImageSnippet } from '../../shared/services/image.service';
 
 @Component({
   selector: 'app-home',

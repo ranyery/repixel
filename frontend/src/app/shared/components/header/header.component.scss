@@ -1,1 +1,9 @@
+:host p-menubar::ng-deep {
+  .p-menubar {
+    border-radius: 0px;
+  }
 
+  .p-menuitem-link-active {
+    font-weight: bold;
+  }
+}
