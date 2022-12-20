@@ -5,7 +5,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/index.js",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install"
   },
   "keywords": [],

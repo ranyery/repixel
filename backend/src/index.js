@@ -1,15 +1,15 @@
 // https://www.freecodecamp.org/news/how-to-make-image-upload-easy-with-angular-1ed14cb2773b/
 // https://github.com/expressjs/multer/blob/master/doc/README-pt-br.md
 // https://www.npmjs.com/package/sharp
-import cors from "cors";
-import express from "express";
-import { fileTypeFromBuffer } from 'file-type'; // ?Change to image-type
+import cors from 'cors';
+import express from 'express';
+import { fileTypeFromBuffer } from 'file-type';
+import multer from 'multer';
+import sharp from 'sharp';
+
 // import imagemin from "imagemin";
 // import imageminMozjpeg from "imagemin-mozjpeg";
-import multer from "multer";
-import sharp from "sharp";
-
-// import { StatusCodes as HTTP_STATUS_CODES } from "http-status-codes";
+import { StatusCodes as HTTP_STATUS_CODES } from "http-status-codes";
 
 const PORT = process.env.PORT || 3333;
 
@@ -38,6 +38,12 @@ app.get("/", (request, response) => {
 })
 
 app.post("/", upload.single("image"), async (request, response) => {
+  if (!request.headers['settings']) {
+    response.status(HTTP_STATUS_CODES.BAD_REQUEST).send();
+    return;
+  }
+
+  const { width, height, xScale, yScale, lockAspectRatio } = JSON.parse(request.headers['settings']?.toString());
   const { originalname, buffer, size } = request.file;
 
   // const jpegBuffer = await imagemin.buffer(buffer, {
@@ -48,7 +54,8 @@ app.post("/", upload.single("image"), async (request, response) => {
 
   // const jpegBase64 = jpegBuffer.toString("base64");
 
-  const pngBuffer = await sharp(buffer).resize(300, 300, {fit: "contain"}).png({}).toBuffer();
+  const pngBuffer = await sharp(buffer).resize(width, height, {fit: "contain"}).jpeg().toBuffer();
+  // const pngBuffer = await sharp(buffer).resize(width, height, {fit: "contain"})['png']({}).toBuffer();
   const { ext, mime } = await fileTypeFromBuffer(pngBuffer);
   const pngBase64 = pngBuffer.toString("base64");
 
