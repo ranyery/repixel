@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { IUploadSettings } from '../interfaces/IUploadConfig';
+
 export class ImageSnippet {
   constructor(public src: string, public file: File) {}
 }
@@ -12,10 +14,10 @@ export class ImageService {
 
   constructor(private http: HttpClient) {}
 
-  public upload(image: File): Observable<any> {
+  public upload(image: File, settings: IUploadSettings): Observable<any> {
     const formData = new FormData();
     formData.append('image', image);
 
-    return this.http.post<any>(this._baseUrl, formData);
+    return this.http.post<any>(this._baseUrl, { formData, settings });
   }
 }

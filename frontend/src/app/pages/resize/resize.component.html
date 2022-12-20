@@ -25,15 +25,29 @@
     <div class="resize-page__configs__pixels">
       <div class="p-inputgroup">
         <span class="p-float-label">
-          <input type="text" id="inputgroup" pInputText [(ngModel)]="width" />
-          <label for="inputgroup">Largura</label>
+          <p-inputNumber
+            [ngModel]="width"
+            [disabled]="lockAspectRatio"
+            [min]="0"
+            mode="decimal"
+            [useGrouping]="false"
+          >
+          </p-inputNumber>
+          <label for="inputgroup">Largura (Width)</label>
         </span>
         <span class="p-inputgroup-addon">px</span>
       </div>
       <div class="p-inputgroup">
         <span class="p-float-label">
-          <input type="text" id="inputgroup" pInputText [(ngModel)]="height" />
-          <label for="inputgroup">Altura</label>
+          <p-inputNumber
+            [ngModel]="height"
+            [disabled]="lockAspectRatio"
+            [min]="0"
+            mode="decimal"
+            [useGrouping]="false"
+          >
+          </p-inputNumber>
+          <label for="inputgroup">Altura (Height)</label>
         </span>
         <span class="p-inputgroup-addon">px</span>
       </div>
@@ -41,21 +55,37 @@
     <div class="resize-page__configs__percentage">
       <div class="p-inputgroup">
         <span class="p-float-label">
-          <input type="text" id="inputgroup" pInputText [(ngModel)]="xScale" />
-          <label for="inputgroup">Horizontal</label>
+          <p-inputNumber
+            [ngModel]="xScale"
+            (ngModelChange)="onChangeXScale($event)"
+            [disabled]="!lockAspectRatio"
+            [min]="0"
+            mode="decimal"
+            [useGrouping]="false"
+          >
+          </p-inputNumber>
+          <label for="inputgroup">Horizontal (X)</label>
         </span>
         <span class="p-inputgroup-addon">%</span>
       </div>
       <div class="p-inputgroup">
         <span class="p-float-label">
-          <input type="text" id="inputgroup" pInputText [(ngModel)]="yScale" />
-          <label for="inputgroup">Vertical</label>
+          <p-inputNumber
+            [ngModel]="yScale"
+            (ngModelChange)="onChangeYScale($event)"
+            [disabled]="!lockAspectRatio"
+            [min]="0"
+            mode="decimal"
+            [useGrouping]="false"
+          >
+          </p-inputNumber>
+          <label for="inputgroup">Vertical (Y)</label>
         </span>
         <span class="p-inputgroup-addon">%</span>
       </div>
     </div>
     <p-checkbox
-      label="Manter taxa de proporção"
+      label="Manter taxa de proporção (apenas para %)"
       [(ngModel)]="lockAspectRatio"
       [binary]="true"
     ></p-checkbox>

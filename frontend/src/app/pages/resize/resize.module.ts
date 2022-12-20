@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { CheckboxModule } from 'primeng/checkbox';
 import { FileUploadModule } from 'primeng/fileupload';
-import { InputTextModule } from 'primeng/inputtext';
+import { InputNumberModule } from 'primeng/inputnumber';
 import { ImageService } from 'src/app/shared/services/image.service';
 
 import { ResizeRoutingModule } from './resize-routing.module';
@@ -20,7 +20,7 @@ import { ResizeComponent } from './resize.component';
     ResizeRoutingModule,
     CheckboxModule,
     FileUploadModule,
-    InputTextModule,
+    InputNumberModule,
   ],
   providers: [ImageService],
 })

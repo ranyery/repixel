@@ -85,4 +85,9 @@
       display: none;
     }
   }
+
+  p-inputnumber::ng-deep input.p-inputnumber-input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
 }

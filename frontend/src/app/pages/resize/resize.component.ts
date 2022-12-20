@@ -15,7 +15,7 @@ export class ResizeComponent implements OnInit {
   public xScale: number = 100;
   public yScale: number = 100;
 
-  public lockAspectRatio: boolean = true;
+  public lockAspectRatio: boolean = false;
 
   constructor(private imageService: ImageService) {}
 
@@ -49,5 +49,25 @@ export class ResizeComponent implements OnInit {
 
   public onRemove() {
     this.fileToUpload = null;
+  }
+
+  public onChangeXScale(value: number): void {
+    if (this.lockAspectRatio) {
+      this.xScale = value;
+      this.yScale = value;
+      return;
+    }
+
+    this.xScale = value;
+  }
+
+  public onChangeYScale(value: number): void {
+    if (this.lockAspectRatio) {
+      this.xScale = value;
+      this.yScale = value;
+      return;
+    }
+
+    this.yScale = value;
   }
 }
