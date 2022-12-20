@@ -37,14 +37,14 @@ app.get("/", (request, response) => {
   return response.send({message: "Hello, World!"})
 })
 
-app.post("/", upload.single("image"), async (request, response) => {
-  if (!request.headers['settings']) {
+app.post("/", upload.array("image", 1), async (request, response) => {
+  if (!request.body['width'] && !request.body['height']) {
     response.status(HTTP_STATUS_CODES.BAD_REQUEST).send();
     return;
   }
 
-  const { width, height, xScale, yScale, lockAspectRatio } = JSON.parse(request.headers['settings']?.toString());
-  const { originalname, buffer, size } = request.file;
+  const { width, height, xScale, yScale, lockAspectRatio } = request.body;
+  const { originalname, buffer, size } = request.files[0];
 
   // const jpegBuffer = await imagemin.buffer(buffer, {
   //   plugins: [imageminMozjpeg({ quality: 50 })],
@@ -54,7 +54,7 @@ app.post("/", upload.single("image"), async (request, response) => {
 
   // const jpegBase64 = jpegBuffer.toString("base64");
 
-  const pngBuffer = await sharp(buffer).resize(width, height, {fit: "contain"}).jpeg().toBuffer();
+  const pngBuffer = await sharp(buffer).resize(Number(width), Number(height), {fit: "contain"}).jpeg().toBuffer();
   // const pngBuffer = await sharp(buffer).resize(width, height, {fit: "contain"})['png']({}).toBuffer();
   const { ext, mime } = await fileTypeFromBuffer(pngBuffer);
   const pngBase64 = pngBuffer.toString("base64");
