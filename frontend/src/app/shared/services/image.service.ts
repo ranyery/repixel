@@ -10,14 +10,22 @@ export class ImageSnippet {
 
 @Injectable({ providedIn: 'root' })
 export class ImageService {
-  private _baseUrl = 'https://api.converterimagem.com';
+  private _baseUrl = '/api';
 
   constructor(private http: HttpClient) {}
 
   public upload(image: File, settings: IUploadSettings): Observable<any> {
+    const { width, height, xScale, yScale, lockAspectRatio } = settings;
+
     const formData = new FormData();
     formData.append('image', image);
-    const headers = new HttpHeaders().set('settings', JSON.stringify(settings));
+    formData.append('width', String(width));
+    formData.append('height', String(height));
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+      settings: JSON.stringify(settings),
+    });
 
     return this.http.post<any>(this._baseUrl, formData, { headers });
   }

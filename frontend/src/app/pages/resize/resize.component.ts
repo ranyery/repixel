@@ -18,6 +18,9 @@ export class ResizeComponent implements OnInit {
 
   public lockAspectRatio: boolean = false;
 
+  // Just to test
+  public hasImageConverted: any = null;
+
   constructor(private imageService: ImageService) {}
 
   ngOnInit(): void {}
@@ -39,6 +42,7 @@ export class ResizeComponent implements OnInit {
     reader.addEventListener('load', () => {
       this.imageService.upload(this.fileToUpload!, settings).subscribe({
         next: (data) => {
+          this.hasImageConverted = data;
           console.log('🟢 Success:', data);
         },
         error: (error) => {
