@@ -91,16 +91,3 @@
     ></p-checkbox>
   </div>
 </div>
-<!-- JUST TO TEST -->
-<div *ngIf="hasImageConverted">
-  <a
-    [download]="hasImageConverted?.originalname"
-    [href]="hasImageConverted?.base64"
-    [title]="hasImageConverted?.originalname"
-  >
-    <img
-      [alt]="hasImageConverted?.originalname"
-      [src]="hasImageConverted?.base64"
-    />
-  </a>
-</div>
