@@ -26,6 +26,11 @@
     }
   }
 
+  @media (max-width: 992px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
   // Custom components
   p-fileupload::ng-deep .p-fileupload {
     height: 100%;
@@ -33,6 +38,12 @@
     flex-direction: column-reverse;
     border: dotted 4px #000;
     border-radius: 8px;
+
+    p-button .p-button {
+      color: #ffffff;
+      background: #22c55e;
+      border: 1px solid #22c55e;
+    }
 
     .p-fileupload-buttonbar {
       display: flex;
@@ -54,6 +65,12 @@
       color: #000;
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
+
+      .p-button-icon-only {
+        color: #ffffff;
+        background: #ef4444;
+        border: 1px solid #ef4444;
+      }
     }
 
     .no-fileupload {
@@ -83,6 +100,18 @@
 
     .p-progressbar {
       display: none;
+    }
+
+    @media (max-width: 1200px) {
+      .p-fileupload-content {
+        margin: 32px 0;
+      }
+
+      .no-fileupload {
+        p {
+          font-size: 1.5rem;
+        }
+      }
     }
   }
 

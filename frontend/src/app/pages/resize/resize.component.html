@@ -1,12 +1,13 @@
 <div class="resize-page">
-  <div class="col-6">
+  <div class="col-12 col-lg-6 col-sm-10 col-sm-12">
     <p-fileUpload
       [customUpload]="true"
       (uploadHandler)="uploadHandler($event)"
       (onSelect)="onSelect($event)"
       (onRemove)="onRemove()"
       [multiple]="false"
-      accept="image/*"
+      [disabled]="fileToUpload !== null"
+      accept="image/*.{jpeg,png,webp,avif,gif,svg,tiff}"
       [maxFileSize]="5 * 1000000"
       [showCancelButton]="false"
       chooseLabel="Selecione uma imagem"
@@ -20,7 +21,7 @@
       </ng-template>
     </p-fileUpload>
   </div>
-  <div class="resize-page__configs col-6">
+  <div class="resize-page__configs col-12 col-lg-6 col-sm-10 col-sm-12">
     <p class="resize-page__configs__title">Custom resize</p>
     <div class="resize-page__configs__pixels">
       <div class="p-inputgroup">
