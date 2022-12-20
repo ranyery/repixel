@@ -70,12 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "repixel:build:production",
-              "proxyConfig": "src/proxy.prod.json"
+              "browserTarget": "repixel:build:production"
             },
             "development": {
-              "browserTarget": "repixel:build:development",
-              "proxyConfig": "src/proxy.dev.json"
+              "browserTarget": "repixel:build:development"
             }
           },
           "defaultConfiguration": "development"

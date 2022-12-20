@@ -10,7 +10,7 @@ export class ImageSnippet {
 
 @Injectable({ providedIn: 'root' })
 export class ImageService {
-  private _baseUrl = '/api';
+  private _baseUrl = 'https://api.converterimagem.com';
 
   constructor(private http: HttpClient) {}
 
