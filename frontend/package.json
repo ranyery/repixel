@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --configuration=production",
     "build": "ng build",
     "postbuild": "node ./postbuild.js && npx svgo -f ./dist/",
     "watch": "ng build --watch --configuration development",
