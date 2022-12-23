@@ -4,7 +4,7 @@ import { PrimeNGConfig } from 'primeng/api';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  host: { class: 'container d-block' },
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   constructor(private primengConfig: PrimeNGConfig) {}
