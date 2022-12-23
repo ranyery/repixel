@@ -7,9 +7,18 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./convert.component.scss'],
 })
 export class ConvertComponent implements OnInit {
+  public formatBase!: string;
+  public formatToConvert!: string;
+
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.data);
+    const data = this.route.snapshot.data;
+    if (Object.keys(data).length === 0) return;
+
+    const { de, para } = data;
+
+    this.formatBase = de;
+    this.formatToConvert = para;
   }
 }
