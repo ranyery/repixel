@@ -6,7 +6,6 @@ export const formatos: ReadonlyArray<string> = [
   'jpg',
   'png',
   'webp',
-  'svg',
   'gif',
   'avif',
   'tiff',
@@ -55,7 +54,7 @@ export class ConvertComponent implements OnInit {
           next: (data) => {
             const imageLink = document.createElement('a');
             imageLink.href = data?.base64;
-            imageLink.download = data?.originalname;
+            imageLink.download = data?.name;
             imageLink.style.display = 'none';
             imageLink.style.visibility = 'hidden';
             document.body.appendChild(imageLink);
