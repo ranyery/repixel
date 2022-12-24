@@ -32,9 +32,11 @@ export class ImageService {
     formatToConvert: string,
     quality: number
   ): Observable<any> {
+    const format = formatToConvert === 'jpg' ? 'jpeg' : formatToConvert;
+
     const formData = new FormData();
     formData.append('image', image);
-    formData.append('formatToConvert', formatToConvert);
+    formData.append('formatToConvert', format);
     formData.append('quality', String(quality));
 
     return this.http.post<any>(`${this._baseUrl}/convert`, formData);
