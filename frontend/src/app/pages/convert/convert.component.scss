@@ -1,1 +1,161 @@
+:host {
+  display: flex;
+  padding: 16px;
+  height: 100%;
 
+  .config-formats {
+    padding: 16px;
+
+    &__title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin: 32px 0;
+    }
+
+    &__buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .field-radiobutton {
+        display: flex;
+        gap: 8px;
+        padding: 0 16px;
+        background: grey;
+        border-radius: 8px;
+        color: #fff;
+        font-size: 1.5rem;
+        font-weight: bold;
+
+        label {
+          width: 100%;
+          padding: 16px 0;
+        }
+      }
+    }
+
+    .blue {
+      color: #3b82f6;
+    }
+  }
+
+  // Custom components
+  p-fileupload::ng-deep .p-fileupload {
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    border: dotted 4px #000;
+    border-radius: 8px;
+
+    p-button .p-button {
+      background: #22c55e;
+      border: 1px solid #22c55e;
+    }
+
+    .p-fileupload-buttonbar {
+      display: flex;
+      justify-content: center;
+      padding: 32px 0;
+      border: 0;
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+
+      > span,
+      p-button::ng-deep .p-button {
+        height: 72px;
+        font-size: 2rem;
+
+        .pi {
+          font-size: 2rem;
+        }
+      }
+    }
+
+    .p-fileupload-content {
+      height: 100%;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0;
+      border: 0;
+      color: #000;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+
+      .p-button-icon-only {
+        background: #ef4444;
+        border: 1px solid #ef4444;
+      }
+    }
+
+    .no-fileupload {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        font-size: 3rem;
+        font-weight: bold;
+        margin: 24px 0 16px;
+      }
+
+      span {
+        font-size: 1.25rem;
+        color: gray;
+      }
+    }
+
+    .p-fileupload-row {
+      text-align: center;
+      flex-direction: column;
+      gap: 16px;
+
+      > div {
+        padding: 0;
+
+        &:nth-child(1) {
+          width: auto;
+
+          img {
+            height: 250px;
+            width: auto;
+          }
+        }
+
+        &:nth-child(2),
+        &:nth-child(3) {
+          display: none;
+          visibility: hidden;
+        }
+
+        &:nth-child(4) {
+          text-align: center !important;
+        }
+      }
+    }
+
+    .p-progressbar {
+      display: none;
+      visibility: hidden;
+    }
+
+    // Validar as consequências
+    @media (max-width: 1200px) {
+      .p-fileupload-content {
+        margin: 32px 0;
+      }
+
+      .no-fileupload {
+        p {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+
+  p-slider::ng-deep .p-slider-horizontal {
+    height: 0.5rem;
+  }
+}

@@ -1,4 +1,45 @@
-<div *ngIf="formatBase && formatToConvert">
-  Converter imagem {{ formatBase | uppercase }} para
-  {{ formatToConvert | uppercase }}
+<p-fileUpload
+  class="col-12 col-lg-9 col-sm-10"
+  [customUpload]="true"
+  (uploadHandler)="uploadHandler($event)"
+  (onSelect)="onSelect($event)"
+  (onRemove)="onRemove()"
+  [multiple]="false"
+  [disabled]="fileToUpload !== null"
+  accept="image/*.{jpeg,png,webp,avif,gif,svg,tiff}"
+  [maxFileSize]="20 * 1000000"
+  [showCancelButton]="false"
+  chooseLabel="Selecione uma imagem"
+  uploadLabel="Converter"
+>
+  <ng-template pTemplate="content">
+    <div class="no-fileupload" *ngIf="!fileToUpload">
+      <i class="pi pi-image" style="font-size: 10rem"></i>
+      <p>Arraste e solte uma imagem aqui</p>
+      <span>tamanho máximo permitido: 20MB</span>
+    </div>
+  </ng-template>
+</p-fileUpload>
+<div class="config-formats col-12 col-lg-3 col-sm-10">
+  <div class="config-formats__buttons">
+    <p class="config-formats__title">
+      Converter para:
+      <span class="blue">{{ formatToConvert | uppercase }}</span>
+    </p>
+    <div *ngFor="let format of allowedFormats" class="field-radiobutton">
+      <p-radioButton
+        [inputId]="format"
+        name="format"
+        [value]="format"
+        [(ngModel)]="formatToConvert"
+      ></p-radioButton>
+      <label [for]="format">{{ format | uppercase }}</label>
+    </div>
+  </div>
+  <div>
+    <p class="config-formats__title">
+      Qualidade: <span class="blue">{{ imageQuality }}%</span>
+    </p>
+    <p-slider [(ngModel)]="imageQuality"></p-slider>
+  </div>
 </div>

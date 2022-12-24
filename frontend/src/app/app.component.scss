@@ -1,6 +1,7 @@
 :host {
   main {
     height: calc(100vh - 58px);
+    background-color: #fff;
 
     @media (max-width: 960px) {
       height: calc(100vh - 50px);

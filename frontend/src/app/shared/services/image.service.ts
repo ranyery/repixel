@@ -26,4 +26,17 @@ export class ImageService {
 
     return this.http.post<any>(this._baseUrl, formData);
   }
+
+  public convert(
+    image: File,
+    formatToConvert: string,
+    quality: number
+  ): Observable<any> {
+    const formData = new FormData();
+    formData.append('image', image);
+    formData.append('formatToConvert', formatToConvert);
+    formData.append('quality', String(quality));
+
+    return this.http.post<any>(`${this._baseUrl}/convert`, formData);
+  }
 }
