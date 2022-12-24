@@ -37,6 +37,26 @@
     .blue {
       color: #3b82f6;
     }
+
+    @media (min-width: 1200px) {
+      padding: 0 16px;
+
+      &__title {
+        font-size: 2rem;
+        margin: 16px 0;
+      }
+
+      &__buttons {
+        gap: 4px;
+
+        .field-radiobutton {
+          label {
+            width: 100%;
+            padding: 8px 0;
+          }
+        }
+      }
+    }
   }
 
   // Custom components
@@ -141,16 +161,23 @@
       visibility: hidden;
     }
 
-    // Validar as consequências
-    @media (max-width: 1200px) {
-      .p-fileupload-content {
-        margin: 32px 0;
+    @media (min-width: 1200px) {
+      .p-fileupload-buttonbar {
+        padding: 24px 0;
+
+        > span,
+        p-button::ng-deep .p-button {
+          height: 48px;
+          font-size: 1.5rem;
+
+          .pi {
+            font-size: 1.5rem;
+          }
+        }
       }
 
-      .no-fileupload {
-        p {
-          font-size: 1.5rem;
-        }
+      .p-fileupload-row > div:nth-child(1) img {
+        height: 200px;
       }
     }
   }
