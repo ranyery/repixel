@@ -15,6 +15,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.items = [
       {
+        label: 'Home',
+        routerLink: '/',
+      },
+      {
         label: 'Converter IMAGEM',
         routerLink: 'converter-imagem',
       },
