@@ -24,10 +24,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/resize/resize.module').then((m) => m.ResizeModule),
   },
-  {
-    path: '**',
-    redirectTo: 'redimensionar-imagem',
-  },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({
