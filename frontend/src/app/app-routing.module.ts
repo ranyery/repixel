@@ -4,9 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    // loadChildren: () => import('./pages/home/home.module').then((m) => m.HomeModule),
+    loadChildren: () =>
+      import('./pages/home/home.module').then((m) => m.HomeModule),
     pathMatch: 'full',
-    redirectTo: 'redimensionar-imagem',
+    //redirectTo: 'redimensionar-imagem',
   },
   {
     path: 'converter-imagem',
@@ -23,10 +24,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/resize/resize.module').then((m) => m.ResizeModule),
   },
-  {
-    path: '**',
-    redirectTo: 'redimensionar-imagem',
-  },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({

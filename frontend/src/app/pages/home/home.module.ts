@@ -6,9 +6,10 @@ import { ImageService } from 'src/app/shared/services/image.service';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
+import { ItemComponent } from './components/item/item.component';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, ItemComponent],
   imports: [
     CommonModule,
     HttpClientModule,
