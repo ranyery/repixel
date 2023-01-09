@@ -13,28 +13,28 @@ export class HomeComponent implements OnInit {
       icon: 'compress',
       title: 'Compress IMAGE',
       description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa optio libero, itaque sunt impedit tenetur accusamus alias animi non quis.',
+        'Comprima JPG,PNG, SVG, e GIFs enquanto economiza espaço e mantém a qualidade.',
       link: 'comprimir-imagem',
     },
     {
       icon: 'resize',
       title: 'Resize IMAGE',
       description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa optio libero, itaque sunt impedit tenetur accusamus alias animi non quis.',
+        'Defina suas dimensões por porcentagens ou pixeis e redimensione suas imagens JPG, PNG, SVG, e GIF.',
       link: 'redimensionar-imagem',
     },
     {
       icon: 'crop',
       title: 'Crop IMAGE',
       description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa optio libero, itaque sunt impedit tenetur accusamus alias animi non quis.',
+        'Recorte uma imagem definindo um retângulo em pixels. Recorte imagens JPG, PNG ou GIF.',
       link: 'cortar-imagem',
     },
     {
       icon: 'convert',
       title: 'Convert to JPG',
       description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa optio libero, itaque sunt impedit tenetur accusamus alias animi non quis.',
+        'Transforme imagens em formato PNG, GIF, TIF, PSD, SVG, WEBP, HEIC, ou RAW em JPG em lote e de forma fácil.',
       link: 'converter-imagem',
     },
   ];
