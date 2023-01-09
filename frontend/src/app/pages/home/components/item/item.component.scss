@@ -2,21 +2,19 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  gap: 16px;
   padding: 16px;
-  background-color: #fff;
+  height: 223px;
+  background-color: #ffff;
   color: #000;
+  font-size: 0.9rem;
   cursor: pointer;
+  border: 1px solid #f3f0ec;
 
   &:hover {
     background-color: #ddd;
-  }
-
-  &__icon {
-    scale: 0.9;
-
-    &:hover {
-      scale: 1;
+    &__icon {
+      height: 60px;
     }
   }
 
